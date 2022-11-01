@@ -1,0 +1,3 @@
+include zsmash/*.pyx
+include zsmash/*.pyd
+include *.py

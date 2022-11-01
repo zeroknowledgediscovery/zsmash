@@ -1,0 +1,9 @@
+.ipynb_checkpoints/
+__pycache__/
+zed_temp/
+boost/
+boost_src/
+build/
+*.egg-info/
+*.cpp
+zbase/

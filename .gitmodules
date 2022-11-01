@@ -1,0 +1,3 @@
+[submodule "zbase"]
+	path = zbase
+	url = https://github.com/zeroknowledgediscovery/zbase_
