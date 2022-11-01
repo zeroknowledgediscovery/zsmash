@@ -36,7 +36,7 @@ if [[ ${skip_install_deps} == 0 ]]; then
     fi
 fi
 
-PKGNAME="zedsuite"
+PKGNAME="zsmash"
 VERSION=$(cat version.py | awk '{print $3}' | sed -e 's/^.//' -e 's/.$//')
 
 # Remove old
