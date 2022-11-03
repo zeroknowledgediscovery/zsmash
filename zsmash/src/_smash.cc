@@ -82,7 +82,7 @@ matrix_dbl _smash(int argc, char *argv[], vector<vector<uint>> &data_in)
   vector <double> partition;
   bool VERBOSE_=false, ONLY_SAE=false, ONLY_PAST=false;
   int HIST=1;
-  bool TIMER=true;
+  bool TIMER=false;
   string configfile="", 
     datafile="",outfile="";
   

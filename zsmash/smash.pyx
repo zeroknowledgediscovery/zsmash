@@ -52,23 +52,27 @@ class Smash(CythonWrapper):
             self._add_param('-c', config_file)
         if data_dir is not None:
             self._add_param('-D', data_dir)
-        if data_type is not None:
-            if data_type.lower() != 'continuous' and data_type.lower() != 'symbolic':
-                data_type = 'symbolic'
-                warnings.warn("Invalid data type passed. Must be \"continuous\" or \"symbolic\". Assuming symbolic.", Warning)
-            elif data_type.lower() == 'continuous':
-                pass
-            self._add_param('-T', data_type)
         if seq_len is not None:
             self._add_param('-L', str(seq_len))
         if num_each is not None:
             self._add_param('-n', str(num_each))
-        if partition is not None:
-            self._add_param('-p', ' '.join([str(n) for n in partition]))
         if timer is not None:
             self._add_param('-t', str(timer))
         if outfile is not None:
             self._add_param('-o', outfile)
+
+        if data_type is not None and data_type.lower() != 'continuous' and data_type.lower() != 'symbolic':
+            data_type = 'symbolic'
+            warnings.warn("Invalid data type passed. Must be \"continuous\" or \"symbolic\". Assuming symbolic.", Warning)
+        elif data_type.lower() == 'continuous':
+            data_type = 'symbolic'
+            if partition is not None:
+                self.data = np.digitize(self.data, partition)
+            else:
+                beg = int(min(min(self.data)))
+                end = int(max(max(self.data))) + 1
+                self.data = np.digitize(self.data, [i for i in range(beg, end)]) - 1
+        self._add_param('-T', data_type)
 
         # Results
         self.dist_matrix = None
