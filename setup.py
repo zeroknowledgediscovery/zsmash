@@ -25,7 +25,7 @@ extensions = [Extension(
         '-static',
         '-fopenmp',
         '-I./zbase',
-        '-I./boost_src',
+        '-I./boost',
         '-Wl,--as-needed',
         '-DCYTHON_PEP489_MULTI_PHASE_INIT=0', # switch multi-phase initialization off which is default in Cython 0.29 for Python>=3.5
     ],
@@ -51,7 +51,7 @@ extensions = [Extension(
     library_dirs=[
         '.',
         f'./{package_name}',
-        './boost_src/lib',
+        './boost/lib',
         '/usr/lib64', # use gsl libs here instead of in zbase
         './zbase/lib',
     ],
